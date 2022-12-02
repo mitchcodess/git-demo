@@ -22,9 +22,17 @@ console.log(result3); // hi!!!!!
 *******************************************************************************/
 
 function multiMap(val, n, cb) {
-  // Your code here
+    let startval = cb(val);
+ for(let i = 0; i < n - 1; i++) {
+     startval = cb(startval);
+ }
+ return startval;
 }
 
+let result3 = multiMap("hi", 5, function(s) {
+  return s + "!";
+});
+console.log(result3); // hi!!!!!
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = multiMap;

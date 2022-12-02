@@ -22,9 +22,21 @@ console.log(myEvery(['book', 'door', 'pen'], hasO));    // false
 *******************************************************************************/
 
 function myEvery(array, cb) {
-    // Your code here
+    for(let i = 0; i < array.length; i++) {
+        if(!cb(array[i])) {
+            return false;
+        }
+    }
+    return true;
 }
+let isEven = function (num) {
+    return num % 2 === 0;
+};
 
+
+
+console.log(myEvery([4, 8, 6, 10], isEven));            // true
+console.log(myEvery([4, 7, 6, 10], isEven));            // false
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
     module.exports = myEvery;

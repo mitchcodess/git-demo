@@ -16,6 +16,12 @@ let cipher1 = {
         return word + 'r';
     }
 };
+
+// for(let key in obj) {
+  if(word.includes(key)) {
+    obj[key](word);
+  }
+}
 console.log(suffixCipher('quietly and gently visualize', cipher1));
 // quietlee and gentlee visualizer
 
@@ -30,11 +36,30 @@ let cipher2 = {
 console.log(suffixCipher('incremental progress is very instrumental', cipher2));
 // INCREMENTAL progressth isth very INSTRUMENTAL
 *******************************************************************************/
-
+//turn string into array
+//Iterate through array word by word checking if the suffix of word ends with 
+//
 function suffixCipher(sentence, cipher) {
-  // Your code here
+  let sentenceArr = sentence.split(' ');
+  for(let i = 0; i < sentenceArr.length; i++) {
+    for(let key in cipher) {
+    if(sentenceArr[i].includes(key)) {
+      sentenceArr[i] = cipher[key](sentenceArr[i]);
+    }
+  }
 }
-
+return sentenceArr.join(' ');
+}
+let cipher2 = {
+  tal: function(word) {
+      return word.toUpperCase();
+  },
+  s: function(word) {
+      return word + 'th';
+  }
+};
+console.log(suffixCipher('incremental progress is very instrumental', cipher2));
+// INCREMENTAL progressth isth very INSTRUMENTAL
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = suffixCipher;

@@ -41,11 +41,38 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - What do you expect each callback function to be returning?
 - How many times are you calling each callback function?
 *******************************************************************************/
-
-function selectiveMap(array, selector, mapper) {
-    // Your code here
+function isEven(n) {
+    return n % 2 === 0;
 }
 
+function isPositive(n) {
+    return n > 0;
+}
+
+function square(n) {
+    return n * n;
+}
+
+function flipSign(n) {
+    return n * -1;
+}
+
+function selectiveMap(array, selector, mapper) {
+   let newArr = [];
+   for(let i = 0; i < array.length; i++) {
+    if(selector(array[i])) {
+        newArr.push(array[i])
+    }
+   }
+   //[8,10,4]
+   for(let i = 0; i < newArr.length; i++) {
+   newArr[i] = mapper(newArr[i])
+   }
+   return newArr;
+}
+
+console.log(selectiveMap([-10, 4, 7, 6, -2, -9], isEven, flipSign));
+// [ 10, -4, 7, -6, 2, -9 ]
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
     module.exports = selectiveMap;

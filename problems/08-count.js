@@ -27,8 +27,20 @@ console.log(result4); // 0
 *******************************************************************************/
 
 function count(array, cb) {
-  // Your code here
-}
+  let count = 0;
+  for(let i = 0; i < array.length; i++) {
+    if(cb(array[i])) {
+        count++
+    }
+    
+  }
+  return count;
+};
+let result2 = count([17, 5, 31, 7, 100], function (n) {
+  return n % 2 === 0;
+});
+console.log(result2); // 1
+
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {

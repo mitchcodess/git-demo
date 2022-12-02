@@ -37,10 +37,28 @@ let result6 = one(['apple', 'dog', 'food', 'cat'], function(el, idx) {
 console.log(result6);   // true
 *******************************************************************************/
 
-function one(array, cb) {
-  // Your code here
-}
 
+  function one(array, cb) {
+    let count = 0;
+    for(let i = 0; i < array.length; i++) {
+     
+      if(cb(array[i], i)) {
+          count++
+      }
+      
+    }
+    if(count === 1) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+
+  let result3 = one(['x', 'a', 'y', 'a', 'z'], function(el) {
+    return el === 'a';
+});
+console.log(result3);   // false
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 try {
   module.exports = one;
